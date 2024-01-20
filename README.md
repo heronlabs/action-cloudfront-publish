@@ -1,1 +1,1 @@
-# publish-s3-action
+# publish-cloudfront-action
