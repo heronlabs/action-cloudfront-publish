@@ -24,12 +24,11 @@ inputs:
     description: inputs.DISTRIBUTION_ID
     required: true
 
-
 runs:
   using: composite
   steps:
     - name: '[PUBLISH] | Configure AWS Credentials'
-      uses: aws-actions/configure-aws-credentials@v1
+      uses: aws-actions/configure-aws-credentials@v4
       with:
         aws-region: ${{ inputs.AWS_REGION }}
         aws-access-key-id: ${{ inputs.AWS_ACCESS_KEY_ID }}
