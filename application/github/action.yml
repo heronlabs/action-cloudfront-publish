@@ -28,7 +28,6 @@ runs:
         role-to-assume: ${{ inputs.AWS_ROLE_TO_ASSUME }}
         role-duration-seconds: ${{ inputs.AWS_ROLE_DURATION_SECONDS }}
         role-session-name: publish-cloudfront-action-session
-        audience: sts.amazonaws.com
 
     - name: '[PUBLISH] | Publish statics on AWS Cloudfront Bucket website'
       shell: bash
