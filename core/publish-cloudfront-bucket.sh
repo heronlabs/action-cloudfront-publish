@@ -1,3 +1,9 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-aws cloudfront create-invalidation --distribution-id $DISTRIBUTION_ID --paths "/*"
+set -euo pipefail
+
+: "${DISTRIBUTION_ID:?DISTRIBUTION_ID is required}"
+
+aws cloudfront create-invalidation \
+  --distribution-id "${DISTRIBUTION_ID}" \
+  --paths "/*"

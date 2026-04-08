@@ -2,37 +2,35 @@ name: publish-cloudfront-action
 
 author: Heron Labs
 
-description: Publish Cloudfront
+description: Invalidate an AWS CloudFront distribution so downstream viewers pick up fresh origin content.
 
 inputs:
   AWS_ROLE_TO_ASSUME:
-    description: inputs.AWS_ROLE_TO_ASSUME
+    description: ARN of the IAM role to assume via OIDC.
     required: true
   AWS_REGION:
-    description: inputs.AWS_REGION
+    description: AWS region used when calling CloudFront.
     required: true
   AWS_ROLE_DURATION_SECONDS:
-    description: inputs.AWS_ROLE_DURATION_SECONDS
+    description: Duration in seconds for the assumed role session.
     required: true
   DISTRIBUTION_ID:
-    description: inputs.DISTRIBUTION_ID
+    description: CloudFront distribution ID to invalidate.
     required: true
 
 runs:
   using: composite
   steps:
-    - name: '[PUBLISH] | Configure AWS Credentials'
-      uses: aws-actions/configure-aws-credentials@v5
+    - name: 'Configure AWS Credentials'
+      uses: aws-actions/configure-aws-credentials@v6
       with:
         aws-region: ${{ inputs.AWS_REGION }}
         role-to-assume: ${{ inputs.AWS_ROLE_TO_ASSUME }}
         role-duration-seconds: ${{ inputs.AWS_ROLE_DURATION_SECONDS }}
         role-session-name: publish-cloudfront-action-session
 
-    - name: '[PUBLISH] | Publish statics on AWS Cloudfront Bucket website'
+    - name: 'Invalidate CloudFront distribution'
       shell: bash
-      run: |
-        chmod +x ./publish-cloudfront-action/core/publish-cloudfront-bucket.sh
-        ./publish-cloudfront-action/core/publish-cloudfront-bucket.sh
+      run: bash ${{ github.action_path }}/core/publish-cloudfront-bucket.sh
       env:
         DISTRIBUTION_ID: ${{ inputs.DISTRIBUTION_ID }}
