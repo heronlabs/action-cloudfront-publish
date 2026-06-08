@@ -75,7 +75,7 @@ jobs:
       - uses: actions/checkout@v6
 
       - name: Invalidate CloudFront
-        uses: heronlabs/action-cloudfront-publish@v2
+        uses: heronlabs/action-cloudfront-publish@v1
         with:
           AWS_ROLE_TO_ASSUME: ${{ secrets.AWS_ROLE_ARN }}
           AWS_REGION: us-east-1
@@ -86,7 +86,7 @@ jobs:
 ## Notes
 
 - **Invalidates everything**: the action always uses the `/*` path. CloudFront charges per invalidation path after the free tier, so frequent deployments may incur small costs.
-- **Run after the sync step**: invalidation only helps if fresh objects already exist at the origin. Pair with `heronlabs/action-s3-publish@v2` (or equivalent) first.
+- **Run after the sync step**: invalidation only helps if fresh objects already exist at the origin. Pair with `heronlabs/action-s3-publish@v1` (or equivalent) first.
 
 ## License
 
