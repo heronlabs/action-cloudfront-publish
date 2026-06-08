@@ -1,10 +1,10 @@
 {
-  "name": "publish-cloudfront-action",
+  "name": "action-cloudfront-publish",
   "version": "1.0.1",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/heronlabs/publish-cloudfront-action.git"
+    "url": "git+https://github.com/heronlabs/action-cloudfront-publish.git"
   },
   "author": "Heron Labs",
   "license": "MIT"
