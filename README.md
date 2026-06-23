@@ -1,6 +1,6 @@
 # CloudFront Publish Action
 
-[![CI](https://github.com/heronlabs/action-cloudfront-publish/actions/workflows/ci.yml/badge.svg)](https://github.com/heronlabs/action-cloudfront-publish/actions/workflows/ci.yml)
+[![CI](https://github.com/heronlabs/action-cloudfront-publish/actions/workflows/continuous-integration.yml/badge.svg)](https://github.com/heronlabs/action-cloudfront-publish/actions/workflows/continuous-integration.yml)
 
 > Invalidate an AWS CloudFront distribution so viewers pick up fresh origin content.
 
