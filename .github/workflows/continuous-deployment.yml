@@ -39,7 +39,7 @@ jobs:
           cache: 'pnpm'
           node-version: 22.20.0
 
-      - uses: heronlabs/action-tag-release-build@ac326b86142b0c700e75e21f85e389f242ba6a74 # v5.0.0
+      - uses: heronlabs/action-tag-release-build@e17c58fe8fbe3727abd02d5512aec4bbbb94924a # v5.0.0
         with:
           gh_token: ${{ github.token }}
           semantic: ${{ inputs.spec }}
