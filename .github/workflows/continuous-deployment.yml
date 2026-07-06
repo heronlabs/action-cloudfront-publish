@@ -18,6 +18,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   release:
     runs-on: ubuntu-24.04
@@ -26,7 +30,8 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: heronlabs/action-tag-release-build@8bb4f38e6a6c99ec6ceabfe76f23f9dbdf64c3f8 # v4.0.6
+      - uses: heronlabs/action-tag-release-build@ac326b86142b0c700e75e21f85e389f242ba6a74 # v5.0.0
         with:
-          github-token: ${{ github.token }}
-          spec: ${{ inputs.spec }}
+          gh_token: ${{ github.token }}
+          semantic: ${{ inputs.spec }}
+          override_tag: true
