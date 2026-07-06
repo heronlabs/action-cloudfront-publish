@@ -1,8 +1,8 @@
 #!/usr/bin/env bats
 
 setup() {
-  # Put the test/aws stub on PATH
-  export PATH="$BATS_TEST_DIRNAME:$PATH"
+  # Put the aws mock stub on PATH
+  export PATH="$BATS_TEST_DIRNAME/__mocks__:$PATH"
   local log; log="$(mktemp)"
   export AWS_LOG="$log"
 }

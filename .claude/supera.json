@@ -2,8 +2,8 @@
   "stack": "bash",
   "verify": {
     "install": "true",
-    "lint": "shellcheck core/*.sh test/*.bats test/aws",
-    "test": "bats test/"
+    "lint": "shellcheck core/*.sh tests/*.bats tests/__mocks__/*",
+    "test": "bats tests/"
   },
   "worktree": { "dir": ".worktrees", "base": "main" },
   "pr": { "base": "main", "remote": "origin" },
