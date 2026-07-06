@@ -1,3 +1,9 @@
+## v4.0.1 (2026-07-06)
+
+### Miscellaneous Chores
+
+* other: Restructure test directory and update lint config (#18) (dd92c491ad72f18d76796f9206b07e4338cf3dae)
+
 ## v4.0.0 (2026-07-06)
 
 
