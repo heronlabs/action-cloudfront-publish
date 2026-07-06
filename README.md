@@ -1,10 +1,21 @@
-# CloudFront Publish Action
+# ☁️ CloudFront Publish Action
 
 [![CI](https://github.com/heronlabs/action-cloudfront-publish/actions/workflows/continuous-integration.yml/badge.svg)](https://github.com/heronlabs/action-cloudfront-publish/actions/workflows/continuous-integration.yml)
 
-> Invalidate an AWS CloudFront distribution so viewers pick up fresh origin content.
+> Invalidate an AWS CloudFront distribution so downstream viewers pick up fresh origin content.
 
 Authenticates to AWS via OIDC (no long-lived keys) and runs `aws cloudfront create-invalidation --paths "/*"` against the given distribution.
+
+## Contents
+
+- [Usage](#usage)
+- [Inputs](#inputs)
+- [Outputs](#outputs)
+- [Permissions](#permissions)
+- [Architecture](#architecture)
+- [How it works](#how-it-works)
+- [Notes](#notes)
+- [License](#license)
 
 ## Usage
 
@@ -81,6 +92,28 @@ The assumed role must allow invalidation on the target distribution:
 ```
 
 </details>
+
+## Architecture
+
+Bash shell script wrapped by a composite GitHub Action.
+
+```
+├── action.yml                         # Composite action definition
+├── core/
+│   └── publish-cloudfront-bucket.sh   # CLI entry point — invalidation call
+├── tests/
+│   ├── aws                            # AWS CLI stub (records invocations)
+│   └── test_publish_cloudfront_bucket.bats  # BATS tests
+├── Makefile                           # test (bats) + lint (shellcheck)
+└── version.txt                        # Current version
+```
+
+## How it works
+
+`action.yml` defines two composite steps:
+
+1. **Configure AWS credentials** — `aws-actions/configure-aws-credentials@v6` assumes the OIDC role with the requested duration, exposing short-lived credentials to the next step.
+2. **Invalidate** — `core/publish-cloudfront-bucket.sh` validates `DISTRIBUTION_ID` is set, then calls `aws cloudfront create-invalidation --paths "/*"` on the target distribution.
 
 ## Notes
 
