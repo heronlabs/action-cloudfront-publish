@@ -23,7 +23,7 @@ jobs:
   deploy:
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       - name: Publish assets
         uses: heronlabs/action-s3-publish@v3
