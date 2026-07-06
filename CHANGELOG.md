@@ -1,3 +1,9 @@
+## v4.0.2 (2026-07-06)
+
+### Documentation
+
+* docs: update title in README for clarity (c3b28406f586661af2ccd00432e26807378effc2)
+
 ## v4.0.1 (2026-07-06)
 
 ### Miscellaneous Chores
