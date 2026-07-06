@@ -1,4 +1,4 @@
-# ☁️ CloudFront Publish Action
+# ☁️ action-cloudfront-publish — Invalidate distribution.
 
 [![CI](https://github.com/heronlabs/action-cloudfront-publish/actions/workflows/continuous-integration.yml/badge.svg)](https://github.com/heronlabs/action-cloudfront-publish/actions/workflows/continuous-integration.yml)
 
