@@ -1,8 +1,10 @@
-# ☁️ action-cloudfront-publish — Invalidate distribution.
+# ☁️ action-cloudfront-publish — Invalidate CloudFront distribution
 
-[![CI](https://github.com/heronlabs/action-cloudfront-publish/actions/workflows/continuous-integration.yml/badge.svg)](https://github.com/heronlabs/action-cloudfront-publish/actions/workflows/continuous-integration.yml)
+[![CI][ci-badge]][ci-url]
+[![License: MIT][license-badge]][license-url]
+[![GitHub Marketplace][marketplace-badge]][marketplace-url]
 
-> Invalidate an AWS CloudFront distribution so downstream viewers pick up fresh origin content.
+> **GitHub Action** to invalidate an AWS CloudFront distribution so downstream viewers pick up fresh origin content.
 
 Authenticates to AWS via OIDC (no long-lived keys) and runs `aws cloudfront create-invalidation --paths "/*"` against the given distribution.
 
@@ -125,3 +127,10 @@ Bash shell script wrapped by a composite GitHub Action.
 ## License
 
 MIT
+
+[ci-badge]: https://github.com/heronlabs/action-cloudfront-publish/actions/workflows/continuous-integration.yml/badge.svg
+[ci-url]: https://github.com/heronlabs/action-cloudfront-publish/actions/workflows/continuous-integration.yml
+[license-badge]: https://img.shields.io/badge/License-MIT-blue.svg
+[license-url]: ./LICENSE
+[marketplace-badge]: https://img.shields.io/badge/GitHub-Marketplace-green.svg
+[marketplace-url]: https://github.com/marketplace/actions/action-cloudfront-publish
