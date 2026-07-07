@@ -98,14 +98,15 @@ The assumed role must allow invalidation on the target distribution:
 Bash shell script wrapped by a composite GitHub Action.
 
 ```
-├── action.yml                         # Composite action definition
+├── action.yml                    # Composite action definition
 ├── core/
-│   └── publish-cloudfront-bucket.sh   # CLI entry point — invalidation call
+│   └── publish.sh                # CLI entry point — CloudFront invalidation
 ├── tests/
-│   ├── aws                            # AWS CLI stub (records invocations)
-│   └── test_publish_cloudfront_bucket.bats  # BATS tests
-├── Makefile                           # test (bats) + lint (shellcheck)
-└── version.txt                        # Current version
+│   ├── __mocks__/
+│   │   └── aws                   # AWS CLI stub (records invocations)
+│   └── action.bats               # BATS tests
+├── Makefile                      # test (bats) + lint (shellcheck)
+└── version.txt                   # Current version
 ```
 
 ## How it works
@@ -113,7 +114,7 @@ Bash shell script wrapped by a composite GitHub Action.
 `action.yml` defines two composite steps:
 
 1. **Configure AWS credentials** — `aws-actions/configure-aws-credentials@v6` assumes the OIDC role with the requested duration, exposing short-lived credentials to the next step.
-2. **Invalidate** — `core/publish-cloudfront-bucket.sh` validates `DISTRIBUTION_ID` is set, then calls `aws cloudfront create-invalidation --paths "/*"` on the target distribution.
+2. **Invalidate** — `core/publish.sh` validates `DISTRIBUTION_ID` is set, then calls `aws cloudfront create-invalidation --paths "/*"` on the target distribution.
 
 ## Notes
 

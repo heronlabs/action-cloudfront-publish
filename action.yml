@@ -35,6 +35,6 @@ runs:
 
     - name: 'Invalidate CloudFront distribution'
       shell: bash
-      run: bash ${{ github.action_path }}/core/publish-cloudfront-bucket.sh
+      run: bash ${{ github.action_path }}/core/publish.sh
       env:
         DISTRIBUTION_ID: ${{ inputs.DISTRIBUTION_ID }}

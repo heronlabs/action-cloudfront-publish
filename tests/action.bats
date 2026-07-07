@@ -14,7 +14,7 @@ teardown() {
 @test "happy path: invalidates distribution" {
   export DISTRIBUTION_ID=E123ABC
 
-  run bash "$BATS_TEST_DIRNAME/../core/publish-cloudfront-bucket.sh"
+  run bash "$BATS_TEST_DIRNAME/../core/publish.sh"
 
   [ "$status" -eq 0 ]
   grep -q 'cloudfront create-invalidation' "$AWS_LOG"
@@ -23,7 +23,7 @@ teardown() {
 }
 
 @test "missing distribution id: hard error" {
-  run bash "$BATS_TEST_DIRNAME/../core/publish-cloudfront-bucket.sh"
+  run bash "$BATS_TEST_DIRNAME/../core/publish.sh"
 
   [ "$status" -ne 0 ]
   # aws stub should not have been called — log stays empty
