@@ -5,7 +5,7 @@ on:
     branches: [main]
   workflow_dispatch:
     inputs:
-      spec:
+      semantic:
         description: The SEMVER specification.
         required: true
         type: choice
@@ -30,7 +30,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: heronlabs/action-tag-release-build@v5 # v5.0.0
+      - uses: heronlabs/action-tag-release-build@b43a981daf766740bc305762d1ee0ef1c6c6634a # v5.0.2
         with:
           gh_token: ${{ github.token }}
-          semantic: ${{ inputs.spec }}
+          semantic: ${{ inputs.semantic }}
