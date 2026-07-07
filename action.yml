@@ -33,7 +33,7 @@ runs:
         role-duration-seconds: ${{ inputs.AWS_ROLE_DURATION_SECONDS }}
         role-session-name: action-cloudfront-publish-session
 
-    - name: 'Invalidate CloudFront distribution'
+    - name: 'Publish to CloudFront'
       shell: bash
       run: bash ${{ github.action_path }}/core/publish.sh
       env:
