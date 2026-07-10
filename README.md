@@ -47,7 +47,7 @@ jobs:
           BUCKET_NAME: my-static-site
 
       - name: Invalidate CloudFront
-        uses: heronlabs/action-cloudfront-publish@v3
+        uses: heronlabs/action-cloudfront-publish@v6
         with:
           AWS_ROLE_TO_ASSUME: ${{ secrets.AWS_ROLE_ARN }}
           AWS_REGION: us-east-1
