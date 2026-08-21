@@ -1,4 +1,5 @@
 #!/usr/bin/env bats
+# shellcheck disable=SC2030,SC2031  # each @bats test runs in its own subshell; DISTRIBUTION_ID is intentionally test-local
 
 setup() {
   # Put the aws mock stub on PATH
