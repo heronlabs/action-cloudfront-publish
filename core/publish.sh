@@ -4,6 +4,12 @@ set -euo pipefail
 
 : "${DISTRIBUTION_ID:?DISTRIBUTION_ID is required}"
 
-aws cloudfront create-invalidation \
+invalidation_id="$(aws cloudfront create-invalidation \
   --distribution-id "${DISTRIBUTION_ID}" \
-  --paths "/*"
+  --paths "/*" \
+  --query 'Invalidation.Id' \
+  --output text)"
+
+aws cloudfront wait invalidation-completed \
+  --distribution-id "${DISTRIBUTION_ID}" \
+  --id "${invalidation_id}"

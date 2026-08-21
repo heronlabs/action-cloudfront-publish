@@ -1,4 +1,5 @@
 #!/usr/bin/env bats
+# shellcheck disable=SC2030,SC2031  # each @bats test runs in its own subshell; DISTRIBUTION_ID is intentionally test-local
 
 setup() {
   # Put the aws mock stub on PATH
@@ -20,6 +21,16 @@ teardown() {
   grep -q 'cloudfront create-invalidation' "$AWS_LOG"
   grep -q -- '--distribution-id E123ABC' "$AWS_LOG"
   grep -q -- '--paths /\*' "$AWS_LOG"
+}
+
+@test "happy path: waits for invalidation to complete" {
+  export DISTRIBUTION_ID=E123ABC
+
+  run bash "$BATS_TEST_DIRNAME/../core/publish.sh"
+
+  [ "$status" -eq 0 ]
+  grep -q 'cloudfront wait invalidation-completed' "$AWS_LOG"
+  grep -q -- '--id I2J0Z9EXAMPLE' "$AWS_LOG"
 }
 
 @test "missing distribution id: hard error" {
