@@ -1,3 +1,9 @@
+## v6.1.0 (2026-08-21)
+
+### Features
+
+* feat: wait for invalidation to complete before finishing (#31) (00211093b27b1bf972247d4348f9d26b631a354c)
+
 ## v6.0.4 (2026-07-17)
 
 
